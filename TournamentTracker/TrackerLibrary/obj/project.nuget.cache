@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "OrVRPAl/HLe5BULzTaB6hHk2Oi2aq8LbWmDNsHF0cOkmLw0VAooc9QmxfNolK9k1oh3OwlCJtKHPZAcHDdlElQ==",
+  "dgSpecHash": "cR1RAo5Nw7AoYY0pu7bvg2mSGevI6KS82ki63TRUa2qR00MILMllkEPSttOpmu7YY4RNUpIwjFXqKvdQTFng5Q==",
   "success": true,
   "projectFilePath": "D:\\zaiom\\pisanie\\c#\\projekt\\TournamentTracker\\TrackerLibrary\\TrackerLibrary.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\zaiom\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
+  ],
   "logs": []
 }
