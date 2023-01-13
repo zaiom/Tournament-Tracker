@@ -48,6 +48,14 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.0.123, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
             }
           },
           "imports": [
