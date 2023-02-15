@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "TrackerUI/1.0.0": {
         "dependencies": {
+          "Dapper": "2.0.123",
           "TrackerLibrary": "1.0.0"
         },
         "runtime": {
