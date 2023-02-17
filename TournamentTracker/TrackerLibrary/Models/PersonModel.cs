@@ -37,5 +37,13 @@ namespace TrackerLibrary.Models
         /// </summary>
         public string Cellphone { get; set; }
 
+        public string FullName
+        {
+            get
+            {
+                return $"{ FirstName } { LastName }";
+            }
+        }
+
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using TrackerLibrary.Models;
 
 //@PlaceNumber int,
@@ -17,9 +18,10 @@ namespace TrackerLibrary.DataAcces
 {
     public class SqlConnector : IDataConnection
     {
+        private const string db = "Tournaments";
         public PersonModel CreatePerson(PersonModel model)
         {
-            using IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments"));
+            using IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db));
             {
                 var p = new DynamicParameters();
                 p.Add("@FirstName", model.FirstName);
@@ -44,7 +46,7 @@ namespace TrackerLibrary.DataAcces
         /// <returns>The prize information, including the unique indentifier.</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            using IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments"));
+            using IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db));
             {
                 var p = new DynamicParameters();
                 p.Add("@PlaceNumber", model.PlaceNumber);
@@ -61,6 +63,18 @@ namespace TrackerLibrary.DataAcces
                 return model;
             }
 
+        }
+
+        public List<PersonModel> GetPerson_All()
+        {
+            List<PersonModel> output;
+
+            using IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db));
+            {
+                output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+            }
+
+            return output;
         }
     }
 }

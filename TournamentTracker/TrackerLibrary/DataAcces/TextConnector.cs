@@ -30,8 +30,8 @@ namespace TrackerLibrary.DataAcces
             {
                 currentId = people.OrderByDescending(x => x.Id).First().Id + 1;
             }
+
             model.Id = currentId;
-            currentId += 1;
 
             people.Add(model);
 
@@ -63,6 +63,11 @@ namespace TrackerLibrary.DataAcces
             prizes.SaveToPrizeFile(PrizesFile);
 
             return model;
+        }
+
+        public List<PersonModel> GetPerson_All()
+        {
+            return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
         }
     }
 }
