@@ -2,17 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using TrackerLibrary.Models;
 
-//@PlaceNumber int,
-//@PlaceName nvarchar(50),
-//@PrizeAmount money,
-//@Prize Percentage float,
-//@id int = 0 output
 
 namespace TrackerLibrary.DataAcces
 {
@@ -90,6 +87,57 @@ namespace TrackerLibrary.DataAcces
             }
         }
 
+        public TournamentModel CreateTournament(TournamentModel model)
+        {
+            using IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db));
+            {
+                SaveTournament(connection, model);
+
+                SaveTournamentPrizes(connection, model);
+
+                SaveTournamentEntries(connection, model);
+
+                return model;
+            }
+        }
+
+        private void SaveTournament(IDbConnection connection, TournamentModel model)
+        {
+            var p = new DynamicParameters();
+            p.Add("@TournamentName", model.TournamentName);
+            p.Add("@EntryFee", model.EntryFee);
+            p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            connection.Execute("dbo.spTournaments_Insert", p, commandType: CommandType.StoredProcedure);
+
+            model.Id = p.Get<int>("@id");
+        }
+
+        private void SaveTournamentPrizes(IDbConnection connection, TournamentModel model)
+        {
+            foreach (PrizeModel pz in model.Prizes)
+            {
+                var p = new DynamicParameters();
+                p.Add("@TournamentId", model.Id);
+                p.Add("@PrizeId", pz.Id);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spTournamentPrizes_Insert", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        private void SaveTournamentEntries(IDbConnection connection, TournamentModel model)
+        {
+            foreach (TeamModel tm in model.EnteredTeams)
+            {
+                var p = new DynamicParameters();
+                p.Add("@TournamentId", model.Id);
+                p.Add("@Teamid", tm.Id);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spTournamentEntries_Insert", p, commandType: CommandType.StoredProcedure);
+            }
+        }
         public List<PersonModel> GetPerson_All()
         {
             List<PersonModel> output;
@@ -97,6 +145,27 @@ namespace TrackerLibrary.DataAcces
             using IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db));
             {
                 output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+            }
+
+            return output;
+        }
+
+        public List<TeamModel> GetTeam_All()
+        {
+            List<TeamModel> output;
+
+            using IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db));
+            {
+                output = connection.Query<TeamModel>("dbo.spTeam_GetAll").ToList();
+
+                foreach(TeamModel team in output)
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@TeamId", team.Id);
+                    team.TeamMembers = connection.Query<PersonModel>("dbo.spTeamMembers_GetByTeam", p, commandType: CommandType.StoredProcedure).ToList();      //we use it to
+                                                                                                                                                                //show the members
+                                                                                                                                                                //of a given team
+                }
             }
 
             return output;

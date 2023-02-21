@@ -39,9 +39,9 @@
             this.createMemberButton = new System.Windows.Forms.Button();
             this.cellphoneValue = new System.Windows.Forms.TextBox();
             this.cellphoneLabel = new System.Windows.Forms.Label();
-            this.emailValue = new System.Windows.Forms.TextBox();
-            this.emailLabel = new System.Windows.Forms.Label();
             this.lastNameValue = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.emailValue = new System.Windows.Forms.TextBox();
             this.lastNameLabel = new System.Windows.Forms.Label();
             this.firstNameValue = new System.Windows.Forms.TextBox();
             this.firstNameLabel = new System.Windows.Forms.Label();
@@ -89,7 +89,7 @@
             this.addMemberButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addMemberButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addMemberButton.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.addMemberButton.Location = new System.Drawing.Point(105, 295);
+            this.addMemberButton.Location = new System.Drawing.Point(109, 296);
             this.addMemberButton.Name = "addMemberButton";
             this.addMemberButton.Size = new System.Drawing.Size(198, 55);
             this.addMemberButton.TabIndex = 19;
@@ -122,9 +122,9 @@
             this.addNewMemberGroupBox.Controls.Add(this.createMemberButton);
             this.addNewMemberGroupBox.Controls.Add(this.cellphoneValue);
             this.addNewMemberGroupBox.Controls.Add(this.cellphoneLabel);
-            this.addNewMemberGroupBox.Controls.Add(this.emailValue);
-            this.addNewMemberGroupBox.Controls.Add(this.emailLabel);
             this.addNewMemberGroupBox.Controls.Add(this.lastNameValue);
+            this.addNewMemberGroupBox.Controls.Add(this.emailLabel);
+            this.addNewMemberGroupBox.Controls.Add(this.emailValue);
             this.addNewMemberGroupBox.Controls.Add(this.lastNameLabel);
             this.addNewMemberGroupBox.Controls.Add(this.firstNameValue);
             this.addNewMemberGroupBox.Controls.Add(this.firstNameLabel);
@@ -172,13 +172,13 @@
             this.cellphoneLabel.TabIndex = 25;
             this.cellphoneLabel.Text = "Cellphone";
             // 
-            // emailValue
+            // lastNameValue
             // 
-            this.emailValue.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.emailValue.Location = new System.Drawing.Point(166, 156);
-            this.emailValue.Name = "emailValue";
-            this.emailValue.Size = new System.Drawing.Size(267, 35);
-            this.emailValue.TabIndex = 24;
+            this.lastNameValue.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lastNameValue.Location = new System.Drawing.Point(166, 97);
+            this.lastNameValue.Name = "lastNameValue";
+            this.lastNameValue.Size = new System.Drawing.Size(267, 35);
+            this.lastNameValue.TabIndex = 24;
             // 
             // emailLabel
             // 
@@ -191,13 +191,13 @@
             this.emailLabel.TabIndex = 23;
             this.emailLabel.Text = "Email";
             // 
-            // lastNameValue
+            // emailValue
             // 
-            this.lastNameValue.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lastNameValue.Location = new System.Drawing.Point(166, 99);
-            this.lastNameValue.Name = "lastNameValue";
-            this.lastNameValue.Size = new System.Drawing.Size(267, 35);
-            this.lastNameValue.TabIndex = 24;
+            this.emailValue.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.emailValue.Location = new System.Drawing.Point(166, 157);
+            this.emailValue.Name = "emailValue";
+            this.emailValue.Size = new System.Drawing.Size(267, 35);
+            this.emailValue.TabIndex = 24;
             // 
             // lastNameLabel
             // 
@@ -314,9 +314,9 @@
         private Label firstNameLabel;
         private TextBox cellphoneValue;
         private Label cellphoneLabel;
-        private TextBox emailValue;
-        private Label emailLabel;
         private TextBox lastNameValue;
+        private Label emailLabel;
+        private TextBox emailValue;
         private Label lastNameLabel;
         private Button createMemberButton;
         private ListBox teamMembersListBox;

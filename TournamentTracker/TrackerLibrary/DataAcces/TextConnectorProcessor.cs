@@ -19,7 +19,7 @@ namespace TrackerLibrary.DataAcces.TextHelpers
 {
     public static class TextConnectorProcessor
     {
-        public static string FullFilePath(this string fileName)     //extension method
+        public static string FullFilePath(this string fileName)                                     //"this" --> extension method
         {
             return $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
         }
@@ -96,6 +96,7 @@ namespace TrackerLibrary.DataAcces.TextHelpers
                     t.TeamMembers.Add(people.Where(x => x.Id == int.Parse(id)).First());
                 }
 
+                output.Add(t);
             }
 
             return output;
