@@ -128,11 +128,15 @@ namespace TrackerLibrary.DataAcces.TextHelpers
                     tm.EnteredTeams.Add(teams.Where(x => x.Id == int.Parse(id)).First());                       //look thorugh a list of teams, finds the team with the id that
                                                                                                                 //matches id (from foreach)
                 }
-                string[] prizeIds = cols[4].Split('|');
 
-                foreach (string id in prizeIds)
+                if (cols[4].Length > 0)
                 {
-                    tm.Prizes.Add(prizes.Where(x => x.Id == int.Parse(id)).First());
+                    string[] prizeIds = cols[4].Split('|');
+
+                    foreach (string id in prizeIds)
+                    {
+                        tm.Prizes.Add(prizes.Where(x => x.Id == int.Parse(id)).First());
+                    } 
                 }
 
                 string[] rounds = cols[5].Split('|');
