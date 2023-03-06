@@ -88,6 +88,15 @@ namespace TrackerLibrary.DataAcces
             return model;
 
         }
+        public List<PersonModel> GetPerson_All()
+        {
+            return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
+        }
+        public List<TeamModel> GetTeam_All()
+        {
+            return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
+
+        }
 
         public void CreateTournament(TournamentModel model)
         {
@@ -107,17 +116,6 @@ namespace TrackerLibrary.DataAcces
             tournaments.Add(model);
 
             tournaments.SaveToTournamentFile(TournamentFile);
-        }
-
-        public List<PersonModel> GetPerson_All()
-        {
-            return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
-        }
-
-        public List<TeamModel> GetTeam_All()
-        {
-            return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
-
         }
     }
 }

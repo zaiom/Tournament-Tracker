@@ -16,7 +16,7 @@ namespace TrackerLibrary
         public const string TeamFile = "TeamModels.csv";
         public const string TournamentFile = "TournamentModels.csv";
         public const string MatchupFile = "MatchupModels.csv";
-        public const string MatchupEntryFile = "MatchupEntryModels";
+        public const string MatchupEntryFile = "MatchupEntryModels.csv";
 
         public static IDataConnection Connection { get; private set; }
 
