@@ -29,93 +29,93 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TournamentDashboardForm));
-            this.createPrizeLabel = new System.Windows.Forms.Label();
-            this.loadExistingTournamentDropDown = new System.Windows.Forms.ComboBox();
-            this.loadExistingTournamentLabel = new System.Windows.Forms.Label();
-            this.loadTournamentButton = new System.Windows.Forms.Button();
-            this.createTournamentButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            createPrizeLabel = new Label();
+            loadExistingTournamentDropDown = new ComboBox();
+            loadExistingTournamentLabel = new Label();
+            loadTournamentButton = new Button();
+            createTournamentButton = new Button();
+            SuspendLayout();
             // 
             // createPrizeLabel
             // 
-            this.createPrizeLabel.AutoSize = true;
-            this.createPrizeLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.createPrizeLabel.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.createPrizeLabel.Location = new System.Drawing.Point(131, 37);
-            this.createPrizeLabel.Name = "createPrizeLabel";
-            this.createPrizeLabel.Size = new System.Drawing.Size(385, 50);
-            this.createPrizeLabel.TabIndex = 13;
-            this.createPrizeLabel.Text = "Tournament Dashboard";
+            createPrizeLabel.AutoSize = true;
+            createPrizeLabel.Font = new Font("Segoe UI Light", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            createPrizeLabel.ForeColor = Color.CornflowerBlue;
+            createPrizeLabel.Location = new Point(131, 37);
+            createPrizeLabel.Name = "createPrizeLabel";
+            createPrizeLabel.Size = new Size(385, 50);
+            createPrizeLabel.TabIndex = 13;
+            createPrizeLabel.Text = "Tournament Dashboard";
             // 
             // loadExistingTournamentDropDown
             // 
-            this.loadExistingTournamentDropDown.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.loadExistingTournamentDropDown.FormattingEnabled = true;
-            this.loadExistingTournamentDropDown.Location = new System.Drawing.Point(154, 206);
-            this.loadExistingTournamentDropDown.Name = "loadExistingTournamentDropDown";
-            this.loadExistingTournamentDropDown.Size = new System.Drawing.Size(339, 38);
-            this.loadExistingTournamentDropDown.TabIndex = 20;
+            loadExistingTournamentDropDown.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            loadExistingTournamentDropDown.FormattingEnabled = true;
+            loadExistingTournamentDropDown.Location = new Point(154, 206);
+            loadExistingTournamentDropDown.Name = "loadExistingTournamentDropDown";
+            loadExistingTournamentDropDown.Size = new Size(339, 38);
+            loadExistingTournamentDropDown.TabIndex = 20;
             // 
             // loadExistingTournamentLabel
             // 
-            this.loadExistingTournamentLabel.AutoSize = true;
-            this.loadExistingTournamentLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.loadExistingTournamentLabel.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.loadExistingTournamentLabel.Location = new System.Drawing.Point(162, 156);
-            this.loadExistingTournamentLabel.Name = "loadExistingTournamentLabel";
-            this.loadExistingTournamentLabel.Size = new System.Drawing.Size(322, 37);
-            this.loadExistingTournamentLabel.TabIndex = 19;
-            this.loadExistingTournamentLabel.Text = "Load Existing Tournament";
+            loadExistingTournamentLabel.AutoSize = true;
+            loadExistingTournamentLabel.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            loadExistingTournamentLabel.ForeColor = Color.CornflowerBlue;
+            loadExistingTournamentLabel.Location = new Point(162, 156);
+            loadExistingTournamentLabel.Name = "loadExistingTournamentLabel";
+            loadExistingTournamentLabel.Size = new Size(322, 37);
+            loadExistingTournamentLabel.TabIndex = 19;
+            loadExistingTournamentLabel.Text = "Load Existing Tournament";
             // 
             // loadTournamentButton
             // 
-            this.loadTournamentButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.loadTournamentButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.loadTournamentButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.loadTournamentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loadTournamentButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.loadTournamentButton.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.loadTournamentButton.Location = new System.Drawing.Point(224, 271);
-            this.loadTournamentButton.Name = "loadTournamentButton";
-            this.loadTournamentButton.Size = new System.Drawing.Size(198, 55);
-            this.loadTournamentButton.TabIndex = 21;
-            this.loadTournamentButton.Text = "Load Tournament";
-            this.loadTournamentButton.UseVisualStyleBackColor = true;
+            loadTournamentButton.FlatAppearance.BorderColor = Color.Silver;
+            loadTournamentButton.FlatAppearance.MouseDownBackColor = Color.Gray;
+            loadTournamentButton.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            loadTournamentButton.FlatStyle = FlatStyle.Flat;
+            loadTournamentButton.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            loadTournamentButton.ForeColor = Color.CornflowerBlue;
+            loadTournamentButton.Location = new Point(224, 271);
+            loadTournamentButton.Name = "loadTournamentButton";
+            loadTournamentButton.Size = new Size(198, 55);
+            loadTournamentButton.TabIndex = 21;
+            loadTournamentButton.Text = "Load Tournament";
+            loadTournamentButton.UseVisualStyleBackColor = true;
             // 
             // createTournamentButton
             // 
-            this.createTournamentButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.createTournamentButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.createTournamentButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.createTournamentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createTournamentButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.createTournamentButton.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.createTournamentButton.Location = new System.Drawing.Point(195, 368);
-            this.createTournamentButton.Name = "createTournamentButton";
-            this.createTournamentButton.Size = new System.Drawing.Size(256, 65);
-            this.createTournamentButton.TabIndex = 33;
-            this.createTournamentButton.Text = "Create Tournament";
-            this.createTournamentButton.UseVisualStyleBackColor = true;
+            createTournamentButton.FlatAppearance.BorderColor = Color.Silver;
+            createTournamentButton.FlatAppearance.MouseDownBackColor = Color.Gray;
+            createTournamentButton.FlatAppearance.MouseOverBackColor = Color.Gainsboro;
+            createTournamentButton.FlatStyle = FlatStyle.Flat;
+            createTournamentButton.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            createTournamentButton.ForeColor = Color.CornflowerBlue;
+            createTournamentButton.Location = new Point(195, 368);
+            createTournamentButton.Name = "createTournamentButton";
+            createTournamentButton.Size = new Size(256, 65);
+            createTournamentButton.TabIndex = 33;
+            createTournamentButton.Text = "Create Tournament";
+            createTournamentButton.UseVisualStyleBackColor = true;
+            createTournamentButton.Click += createTournamentButton_Click;
             // 
             // TournamentDashboardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(646, 494);
-            this.Controls.Add(this.createPrizeLabel);
-            this.Controls.Add(this.createTournamentButton);
-            this.Controls.Add(this.loadTournamentButton);
-            this.Controls.Add(this.loadExistingTournamentDropDown);
-            this.Controls.Add(this.loadExistingTournamentLabel);
-            this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "TournamentDashboardForm";
-            this.Text = "Tournament Dashboard ";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(646, 494);
+            Controls.Add(createPrizeLabel);
+            Controls.Add(createTournamentButton);
+            Controls.Add(loadTournamentButton);
+            Controls.Add(loadExistingTournamentDropDown);
+            Controls.Add(loadExistingTournamentLabel);
+            Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(5, 6, 5, 6);
+            Name = "TournamentDashboardForm";
+            Text = "Tournament Dashboard ";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
