@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -114,7 +115,7 @@ namespace TrackerUI
 
         private void createTournamentButton_Click(object sender, EventArgs e)
         {
-            //Validate data
+            // Validate data
             decimal fee = 0;
 
             bool feeAcceptable = decimal.TryParse(entryFeeValue.Text, out fee);
@@ -128,7 +129,7 @@ namespace TrackerUI
                 return;
             }
 
-            //Create our tournament model
+            // Create our tournament model
             TournamentModel tm = new TournamentModel();
 
             tm.TournamentName = tournamentNameValue.Text;
@@ -137,13 +138,19 @@ namespace TrackerUI
             tm.Prizes = selectedPrizes;
             tm.EnteredTeams = selectedTeams;
 
-            // TODO - Wire up our matchups 
+            // Wire up our matchups 
             TournamentLogic.CreateRounds(tm);
 
             // Create Tournament entry
             // Create all of the prizes entries
             // Create all of team entries
             GlobalConfig.Connection.CreateTournament(tm);
+
+            TournamentLogic.UpdateTournamentResults(tm);
+
+            TournamentViewerForm frm = new TournamentViewerForm(tm);
+            frm.Show();
+            this.Close();
 
 
         }
