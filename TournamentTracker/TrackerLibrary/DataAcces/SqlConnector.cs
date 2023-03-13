@@ -23,7 +23,7 @@ namespace TrackerLibrary.DataAcces
                 var p = new DynamicParameters();
                 p.Add("@FirstName", model.FirstName);
                 p.Add("@LastName", model.LastName);
-                p.Add("@EmailAdress", model.EmailAdress);
+                p.Add("@EmailAdress", model.EmailAddress);
                 p.Add("@Cellphone", model.Cellphone);
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 

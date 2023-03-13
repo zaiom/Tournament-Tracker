@@ -23,7 +23,9 @@ namespace TrackerLibrary.DataAcces.TextHelpers
     {
         public static string FullFilePath(this string fileName)                                     //"this" --> extension method
         {
-            return $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
+            //return $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
+            //return $"{ GlobalConfig.AppKeyLookup("filePath") }\\{ fileName }";
+            return $@"{Directory.GetCurrentDirectory()}\Data\{fileName}";
         }
 
         public static List<string> LoadFile(this string file)
@@ -68,7 +70,7 @@ namespace TrackerLibrary.DataAcces.TextHelpers
                 p.Id = int.Parse(cols[0]);
                 p.FirstName = cols[1];
                 p.LastName = cols[2];
-                p.EmailAdress = cols[3];
+                p.EmailAddress = cols[3];
                 p.Cellphone = cols[4];
                 output.Add(p);
             }
@@ -177,7 +179,7 @@ namespace TrackerLibrary.DataAcces.TextHelpers
 
             foreach (PersonModel p in models)
             {
-                lines.Add($"{ p.Id },{ p.FirstName },{ p.LastName },{ p.EmailAdress },{ p.Cellphone }");
+                lines.Add($"{ p.Id },{ p.FirstName },{ p.LastName },{ p.EmailAddress },{ p.Cellphone }");
             }
 
             File.WriteAllLines(GlobalConfig.PeopleFile.FullFilePath(), lines);

@@ -115,6 +115,7 @@ namespace TrackerUI
 
         private void createTournamentButton_Click(object sender, EventArgs e)
         {
+            
             // Validate data
             decimal fee = 0;
 
@@ -146,7 +147,9 @@ namespace TrackerUI
             // Create all of team entries
             GlobalConfig.Connection.CreateTournament(tm);
 
-            TournamentLogic.UpdateTournamentResults(tm);
+            tm.AlertUsersToNewRound();
+
+            //TournamentLogic.UpdateTournamentResults(tm);
 
             TournamentViewerForm frm = new TournamentViewerForm(tm);
             frm.Show();
