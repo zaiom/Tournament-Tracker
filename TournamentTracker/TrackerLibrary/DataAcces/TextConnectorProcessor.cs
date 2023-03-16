@@ -24,8 +24,8 @@ namespace TrackerLibrary.DataAcces.TextHelpers
         public static string FullFilePath(this string fileName)                                     //"this" --> extension method
         {
             //return $"{ ConfigurationManager.AppSettings["filePath"] }\\{ fileName }";
-            //return $"{ GlobalConfig.AppKeyLookup("filePath") }\\{ fileName }";
-            return $@"{Directory.GetCurrentDirectory()}\Data\{fileName}";
+            return $"{ GlobalConfig.AppKeyLookup("filePath") }\\{ fileName }";
+            //return $@"{Directory.GetCurrentDirectory()}\Data\{fileName}";
         }
 
         public static List<string> LoadFile(this string file)

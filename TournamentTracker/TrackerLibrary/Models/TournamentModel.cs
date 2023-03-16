@@ -11,6 +11,8 @@ namespace TrackerLibrary.Models
     /// </summary>
     public class TournamentModel
     {
+        public event EventHandler<DateTime> OnTournamentComplete;
+
         /// <summary>
         /// Represent unique indentifier for the tournament.
         /// </summary>
@@ -40,6 +42,13 @@ namespace TrackerLibrary.Models
         /// Represent list of list of matchups.
         /// </summary>
         public List<List<MatchupModel>> Rounds { get; set; } = new List<List<MatchupModel>>();
+
+        public void CompleteTournament()
+        {
+            OnTournamentComplete?.Invoke(this, DateTime.Now);                               // ? means - to that if its available (if we have subscriber, fire the event )
+                                                                                            // generally we just get whatever that just fit here, because
+                                                                                            // we can't use the tournament model
+        }
 
     }
 }
