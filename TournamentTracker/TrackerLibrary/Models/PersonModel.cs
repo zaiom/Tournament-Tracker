@@ -44,6 +44,5 @@ namespace TrackerLibrary.Models
                 return $"{ FirstName } { LastName }";
             }
         }
-
     }
 }

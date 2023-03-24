@@ -73,19 +73,10 @@ namespace TrackerLibrary.DataAcces
             teams.SaveToTeamFile();
 
         }
-        public List<PersonModel> GetPerson_All()
-        {
-            return GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
-        }
-        public List<TeamModel> GetTeam_All()
-        {
-            return GlobalConfig.TeamFile.FullFilePath().LoadFile().ConvertToTeamModels();
-
-        }
 
         public void CreateTournament(TournamentModel model)
         {
-            
+
             List<TournamentModel> tournaments = GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
 
             int currentId = 1;
@@ -103,6 +94,15 @@ namespace TrackerLibrary.DataAcces
             tournaments.SaveToTournamentFile();
 
             TournamentLogic.UpdateTournamentResults(model);
+        }
+        public List<PersonModel> GetPerson_All()
+        {
+            return GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
+        }
+        public List<TeamModel> GetTeam_All()
+        {
+            return GlobalConfig.TeamFile.FullFilePath().LoadFile().ConvertToTeamModels();
+
         }
 
         public List<TournamentModel> GetTournament_All()
@@ -123,7 +123,7 @@ namespace TrackerLibrary.DataAcces
 
             tournaments.SaveToTournamentFile();
 
-            TournamentLogic.UpdateTournamentResults(model);
+            // TournamentLogic.UpdateTournamentResults(model);
         }
     }
 }

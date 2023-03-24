@@ -10,11 +10,6 @@ namespace TrackerLibrary
 {
     public static class TournamentLogic
     {
-        // Order our list randomly of teams
-        // Check if it is big enough - if not, add in byes ( free win in a bracket )
-        // Create our first round of matchups
-        // Create every round after that ( divide by 2 )
-
         public static void  CreateRounds(TournamentModel model)
         {
             List<TeamModel> randomizedTeams = RandomizeTeamOrder(model.EnteredTeams);
@@ -57,54 +52,59 @@ namespace TrackerLibrary
 
         public static void AlertUsersToNewRound(this TournamentModel model)
         {
-            int currentRoundNumber = model.CheckCurrentRound();
-            List<MatchupModel> currentRound = model.Rounds.Where(x => x.First().MatchupRound == currentRoundNumber).First();
+            // Emailing feature currently disabled.
 
-            foreach (MatchupModel matchup in currentRound)
-            {
-                foreach (MatchupEntryModel me in matchup.Entries)
-                {
-                    foreach (PersonModel p in me.TeamCompeting.TeamMembers)
-                    {
-                        AlertPersonToNewRound(p, me.TeamCompeting.TeamName, matchup.Entries.Where(x => x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
-                    }
-                }
-            }
+            //int currentRoundNumber = model.CheckCurrentRound();
+            //List<MatchupModel> currentRound = model.Rounds.Where(x => x.First().MatchupRound == currentRoundNumber).First();
+
+            //foreach (MatchupModel matchup in currentRound)
+            //{
+            //    foreach (MatchupEntryModel me in matchup.Entries)
+            //    {
+            //        foreach (PersonModel p in me.TeamCompeting.TeamMembers)
+            //        {
+            //            AlertPersonToNewRound(p, me.TeamCompeting.TeamName, matchup.Entries.Where(x => x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
+            //        }
+            //    }
+            //}
         }
         private static void AlertPersonToNewRound(PersonModel p, string teamName, MatchupEntryModel competitor)
         {
-            if (p.EmailAddress.Length == 0)
-            {
-                return;
-            }
+            // Emailing feature currently disabled.
 
-            string to = "";
-            string subject = "";
-            StringBuilder body = new StringBuilder();                                 // puts 2 string together
 
-            if (competitor != null)
-            {
-                subject = $"You have a new matchup with {competitor.TeamCompeting.TeamName}";
+            //if (p.EmailAddress.Length == 0)
+            //{
+            //    return;
+            //}
 
-                body.AppendLine("<h1>You have a new matchup</h1>");
-                body.Append("<strong>Competitor: </strong>");                                                  // <strong> is a bold font
-                body.Append(competitor.TeamCompeting.TeamName);
-                body.AppendLine();
-                body.AppendLine();
-                body.AppendLine("Have a great time!");
-                body.AppendLine("~Tournament Tracker");
-            }
-            else
-            {
-                subject = $"You have a bye week this round";
+            //string to = "";
+            //string subject = "";
+            //StringBuilder body = new StringBuilder();                                 // puts 2 string together
 
-                body.AppendLine("Enjoy your round off");
-                body.AppendLine("~Tournament Tracker");
-            }
+            //if (competitor != null)
+            //{
+            //    subject = $"You have a new matchup with {competitor.TeamCompeting.TeamName}";
 
-            to = p.EmailAddress;
+            //    body.AppendLine("<h1>You have a new matchup</h1>");
+            //    body.Append("<strong>Competitor: </strong>");                                                  // <strong> is a bold font
+            //    body.Append(competitor.TeamCompeting.TeamName);
+            //    body.AppendLine();
+            //    body.AppendLine();
+            //    body.AppendLine("Have a great time!");
+            //    body.AppendLine("~Tournament Tracker");
+            //}
+            //else
+            //{
+            //    subject = $"You have a bye week this round";
 
-            EmailLogic.SendEmail(to, subject, body.ToString());
+            //    body.AppendLine("Enjoy your round off");
+            //    body.AppendLine("~Tournament Tracker");
+            //}
+
+            //to = p.EmailAddress;
+
+            //EmailLogic.SendEmail(to, subject, body.ToString());
 
         }
 
@@ -130,6 +130,12 @@ namespace TrackerLibrary
             return output - 1;                                                                                   // this advances to the next round, so we got to subtract by 1
         }
 
+        public static string winnerTeam;
+        public static string runnerUpTeam;
+        public static string tournamentName;
+        public static string prizeWinner;
+        public static string prizeRunnerUp;
+
         private static void CompleteTournament(TournamentModel model)
         {
             GlobalConfig.Connection.CompleteTournament(model);
@@ -153,54 +159,62 @@ namespace TrackerLibrary
                 if (firstPlacePrize != null)
                 {
                     winnerPrize = firstPlacePrize.CalculatePrizePayout(totalIncome);
+                    prizeWinner = winnerPrize.ToString();
                 }
 
                 if (secondPlacePrize != null)
                 {
                     runnerUpPrize = secondPlacePrize.CalculatePrizePayout(totalIncome);
+                    prizeRunnerUp = runnerUpPrize.ToString();
                 }
             }
 
-            // Send Email to all tournament
-            string subject = "";
-            StringBuilder body = new StringBuilder();
+            winnerTeam = winners.TeamName;
+            runnerUpTeam = runnerUp.TeamName;
+            tournamentName = model.TournamentName;
+
+            // Emailing feature currently disabled.
+
+            //// Send Email to all tournament
+            //string subject = "";
+            //StringBuilder body = new StringBuilder();
 
 
-            subject = $"In { model.TournamentName },  { winners.TeamName } has won the tournament!";
+            //subject = $"In { model.TournamentName },  { winners.TeamName } has won the tournament!";
 
-            body.AppendLine("<h1>We have a WINNER!</h1>");
-            body.AppendLine("<p>Congratulations to our winner on a great tournament.</p>");
-            body.AppendLine("<br >/");
+            //body.AppendLine("<h1>We have a WINNER!</h1>");
+            //body.AppendLine("<p>Congratulations to our winner on a great tournament.</p>");
+            //body.AppendLine("<br >/");
 
-            if (winnerPrize > 0 )
-            {
-                body.AppendLine($"<p>{ winners.TeamName } will recieve ${ winnerPrize }</p>");
-            }
+            //if (winnerPrize > 0 )
+            //{
+            //    body.AppendLine($"<p>{ winners.TeamName } will recieve ${ winnerPrize }</p>");
+            //}
 
-            if (runnerUpPrize > 0)
-            {
-                body.AppendLine($"<p>{runnerUp.TeamName} will recieve ${ runnerUpPrize }</p>");
-            }
+            //if (runnerUpPrize > 0)
+            //{
+            //    body.AppendLine($"<p>{runnerUp.TeamName} will recieve ${ runnerUpPrize }</p>");
+            //}
 
-            body.AppendLine("<p>Thanks for a great tournament everyone!</p>");
-            body.AppendLine("~Tournament Tracker");
+            //body.AppendLine("<p>Thanks for a great tournament everyone!</p>");
+            //body.AppendLine("~Tournament Tracker");
 
 
-            List<string> bcc = new List<string>();
+            //List<string> bcc = new List<string>();
 
-            foreach (TeamModel t in model.EnteredTeams)
-            {
-                foreach (PersonModel p in t.TeamMembers)
-                {
-                    if (p.EmailAddress.Length > 0)
-                    {
-                        bcc.Add(p.EmailAddress); 
-                    }
-                } 
-            }
-            EmailLogic.SendEmail(new List<string>(), bcc, subject, body.ToString());
+            //foreach (TeamModel t in model.EnteredTeams)
+            //{
+            //    foreach (PersonModel p in t.TeamMembers)
+            //    {
+            //        if (p.EmailAddress.Length > 0)
+            //        {
+            //            bcc.Add(p.EmailAddress); 
+            //        }
+            //    } 
+            //}
+            //EmailLogic.SendEmail(new List<string>(), bcc, subject, body.ToString());
 
-            // Complete Tournament
+            //// Complete Tournament
             model.CompleteTournament();
 
         }
@@ -272,7 +286,7 @@ namespace TrackerLibrary
                     }
                     else
                     {
-                        throw new Exception("We do not allow ties in this application.");
+                        throw new Exception("We do not allow ties in this application");
                     }
                 }
                 else
@@ -288,7 +302,7 @@ namespace TrackerLibrary
                     }
                     else
                     {
-                        throw new Exception("We do not allow ties in this application.");
+                        throw new Exception("We do not allow ties in this application");
                     }
                 } 
             }
@@ -301,7 +315,7 @@ namespace TrackerLibrary
             List<MatchupModel> currRound = new List<MatchupModel>();
             MatchupModel currMatchup = new MatchupModel();
 
-            while (round < rounds)
+            while (round <= rounds)
             {
                 foreach (MatchupModel match in previousRound)
                 {
@@ -353,7 +367,7 @@ namespace TrackerLibrary
             int output = 0;
             int totalTeams = 1;
 
-            for (int i = 1; i < rounds; i++)
+            for (int i = 1; i <= rounds; i++)
             {
                 totalTeams *= 2;
             }
@@ -373,8 +387,8 @@ namespace TrackerLibrary
                 output += 1;
                 val *= 2;
             }
-            return output;
 
+            return output;
         }
 
         private static List<TeamModel> RandomizeTeamOrder(List<TeamModel> teams)

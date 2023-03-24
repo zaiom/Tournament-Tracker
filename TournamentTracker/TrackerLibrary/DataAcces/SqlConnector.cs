@@ -229,6 +229,8 @@ namespace TrackerLibrary.DataAcces
                     t.Prizes = connection.Query<PrizeModel>("dbo.spPrizes_GetByTournament", p, commandType: CommandType.StoredProcedure).ToList();
 
                     // Populate Teams
+                    //p = new DynamicParameters();
+                    //p.Add("@TournamentId", t.Id);
                     t.EnteredTeams = connection.Query<TeamModel>("dbo.spTeam_GetByTournament", p, commandType: CommandType.StoredProcedure).ToList();
 
                     foreach (TeamModel team in t.EnteredTeams)

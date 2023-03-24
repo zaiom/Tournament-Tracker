@@ -254,7 +254,7 @@ namespace TrackerUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"The applicationn had the following error: {ex.Message}");
+                MessageBox.Show($"The application had the following error: {ex.Message}");
                 return;
             }
             
