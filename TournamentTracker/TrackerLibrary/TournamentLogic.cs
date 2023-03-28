@@ -108,7 +108,7 @@ namespace TrackerLibrary
 
         }
 
-        private static int CheckCurrentRound(this TournamentModel model)
+        public static int CheckCurrentRound(this TournamentModel model)
         {
             int output = 1;
 

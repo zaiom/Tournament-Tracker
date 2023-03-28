@@ -68,10 +68,6 @@ namespace TrackerUI
 
         public void PrizeComplete(PrizeModel model)
         {
-            //Get back from the form a PrizeModel  -- done in the CreatePrizeForm
-
-
-            //Take the PrizeModel and put it into our list of selected prizes
             selectedPrizes.Add(model);
             WireUpLists();
         }
@@ -118,10 +114,9 @@ namespace TrackerUI
             
             // Validate data
             decimal fee = 0;
-
             bool feeAcceptable = decimal.TryParse(entryFeeValue.Text, out fee);
 
-            if (!feeAcceptable)
+            if (!feeAcceptable || fee < 0)
             {
                 MessageBox.Show("You need to enter a valid Entry fee.",
                     "Invalid Fee",
@@ -133,11 +128,29 @@ namespace TrackerUI
             // Create our tournament model
             TournamentModel tm = new TournamentModel();
 
-            tm.TournamentName = tournamentNameValue.Text;
-            tm.EntryFee = fee;
+            if (tournamentNameValue.Text.Length > 0)
+            {
+                tm.TournamentName = tournamentNameValue.Text;
 
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid Tournament Name.", "Invalid Tournament Name");
+                return;
+            }
+
+            tm.EntryFee = fee;
             tm.Prizes = selectedPrizes;
-            tm.EnteredTeams = selectedTeams;
+
+            if (selectedTeams.Count < 2)
+            {
+                MessageBox.Show("Please register at least two teams in the tournament", "Invalid Team Count");
+                return;
+            }
+            else
+            {
+                tm.EnteredTeams = selectedTeams;
+            }
 
             // Wire up our matchups 
             TournamentLogic.CreateRounds(tm);
@@ -147,7 +160,8 @@ namespace TrackerUI
             // Create all of team entries
             GlobalConfig.Connection.CreateTournament(tm);
 
-            tm.AlertUsersToNewRound();
+            // Emailing feature currently disabled.
+            //tm.AlertUsersToNewRound();
 
             //TournamentLogic.UpdateTournamentResults(tm);
 

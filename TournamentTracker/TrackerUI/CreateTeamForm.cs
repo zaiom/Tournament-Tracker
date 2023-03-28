@@ -23,18 +23,7 @@ namespace TrackerUI
 
             callingForm = caller;
 
-            //CreateSampleData();
-
             WireUpLists();
-        }
-
-        private void CreateSampleData()
-        {
-            availableTeamMembers.Add(new PersonModel { FirstName = "Jan", LastName = "Kowalski" });
-            availableTeamMembers.Add(new PersonModel { FirstName = "Julia", LastName = "Nowak" });
-
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Maciek", LastName = "Szczecinek" });
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Billy", LastName = "Butcher" });
         }
 
         private void WireUpLists()
@@ -136,8 +125,25 @@ namespace TrackerUI
         {
             TeamModel t = new TeamModel();
 
-            t.TeamName = teamNameValue.Text;
-            t.TeamMembers = selectedTeamMembers;
+            if (teamNameValue.Text.Length > 0)
+            {
+                t.TeamName = teamNameValue.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid team name", "Invalid Team Name");
+                return;
+            }
+
+            if (selectedTeamMembers.Count > 0)
+            {
+                t.TeamMembers = selectedTeamMembers;
+            }
+            else
+            {
+                MessageBox.Show("Please enter at least one team member", "Invalid Team Member Count");
+                return;
+            }
 
             GlobalConfig.Connection.CreateTeam(t);
 
