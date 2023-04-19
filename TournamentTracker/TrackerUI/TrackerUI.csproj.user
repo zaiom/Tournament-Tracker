@@ -13,6 +13,9 @@
     <Compile Update="TournamentDashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TournamentResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TournamentViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
