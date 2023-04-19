@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "TournamentResultForm";
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TournamentResultForm));
+            SuspendLayout();
+            // 
+            // TournamentResultForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(641, 591);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "TournamentResultForm";
+            Text = "Tournament Result";
+            ResumeLayout(false);
         }
 
         #endregion
